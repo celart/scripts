@@ -1,5 +1,6 @@
 class node():
     def __init__(self):
+        self.num=None
         self.x=None
         self.y=None
         self.z=None
@@ -28,3 +29,13 @@ class node():
         
     def getT(self):
         return  self.temp
+        
+    def setNum(self, t):
+        self.num=t
+        
+    def getNum(self):
+        return self.num
+
+    def __str__(self):
+        return("{0}, {1}, {2}, {3}, {4}".format(self.getNum(), self.getX(), self.getY(), self.getZ(), self.getT()))
+
