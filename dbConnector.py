@@ -18,8 +18,20 @@ def createDb(conn):
     z real,
     temp real)
     """)
+    cur.execute("""
+    CREATE VIEW delta AS SELECT tNode.num as tNum,
+cNode.num as cNum,
+(cNode.x-tNode.x) AS dx,
+(cNode.y-tNode.y) AS dy,
+(cNode.z-tNode.z) AS dz
+FROM cNode, tNode
+    """)
+    cur.execute("""
+    CREATE VIEW cartesian AS SELECT tNum,
+cNum, dx*dx+dy*dy+dz*dz as qD
+FROM delta
+    """)
     conn.commit()
-
     
 def insertTNode(conn, arr):
     cur = conn.cursor()
