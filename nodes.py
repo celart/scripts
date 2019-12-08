@@ -39,3 +39,9 @@ class node():
     def __str__(self):
         return("{0}, {1}, {2}, {3}, {4}".format(self.getNum(), self.getX(), self.getY(), self.getZ(), self.getT()))
 
+def scale(v, a):
+    for i in a:
+        i.setX(v[0]*i.getX())
+        i.setY(v[1]*i.getY())
+        i.setZ(v[2]*i.getZ())
+    return a
